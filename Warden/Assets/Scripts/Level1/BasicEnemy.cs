@@ -21,20 +21,20 @@ public class BasicEnemy : MonoBehaviour
         if (currentEnemyHealth <= 0)
         {
             GetComponent<Animator>().enabled = false;
-            Destroy(gameObject, 5);
+            Destroy(gameObject, 3);
         }
     }
 
-    public void damageTaken (int damageAmount)
+    private void OnTriggerEnter(Collider other)
     {
         StartCoroutine(Wait());
-        currentEnemyHealth -= damageAmount;
+        currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().damage;  
     }
 
     private IEnumerator Wait()
     {
-        enemyAnimations.SetBool("hit", true);
-        yield return new WaitForSeconds(1);
-        enemyAnimations.SetBool("hit", false);
+        enemyAnimations.SetBool("takenDamage", true);
+        yield return new WaitForSeconds(1.2f);
+        enemyAnimations.SetBool("takenDamage", false);
     }
 }

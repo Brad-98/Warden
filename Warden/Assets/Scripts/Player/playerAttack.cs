@@ -8,37 +8,21 @@ public class playerAttack : MonoBehaviour
 
     public int damage = 1;
 
-   // Collider swordCollisionBox;
-    public GameObject enemy;
-
-	// Use this for initialization
 	void Start ()
     {
         playerAnimations = this.gameObject.GetComponent<Animator>();
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(Wait());
+            playerAnimations.SetBool("isWalkingForward", false);
+            playerAnimations.SetInteger("isAttacking", Random.Range(1,3));
         }
-    }
-
-    private IEnumerator Wait()
-    {
-        playerAnimations.SetBool("isAttacking1", true);
-        yield return new WaitForSeconds(0.4f);
-        playerAnimations.SetBool("isAttacking1", false);
-    }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (Input.GetMouseButtonDown(0))
+        else
         {
-            //swordCollisionBox.
-            enemy.GetComponent<BasicEnemy>().damageTaken(damage);
+            playerAnimations.SetInteger("isAttacking", 0);
         }
-    }*/
+    }
 }
