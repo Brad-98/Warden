@@ -161,7 +161,7 @@ MonoBehaviour:
   rotationSmoothTime: 0.1
   pitchMinMax: {x: -19, y: 85}
   target: {fileID: 1775938545}
-  distanceFromTarget: 4
+  distanceFromTarget: 6
 --- !u!81 &149244972
 AudioListener:
   m_ObjectHideFlags: 0
@@ -349,6 +349,19 @@ PrefabInstance:
     - target: {fileID: 780851424, guid: 4e157aac3cc7df34c83f06d0b1fd65c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8530878012191455987, guid: 4e157aac3cc7df34c83f06d0b1fd65c3,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 780851422, guid: 4e157aac3cc7df34c83f06d0b1fd65c3, type: 3}
+      propertyPath: maxEnemyHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 780851422, guid: 4e157aac3cc7df34c83f06d0b1fd65c3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e157aac3cc7df34c83f06d0b1fd65c3, type: 3}
@@ -1032,9 +1045,24 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5030426446598016839, guid: 3bd8e33681ce59e4998bbd879af619e3,
+        type: 3}
+      propertyPath: axeCollider
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8056422230104337410, guid: 3bd8e33681ce59e4998bbd879af619e3,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1072028214086841329, guid: 3bd8e33681ce59e4998bbd879af619e3,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6874232396858393477, guid: 3bd8e33681ce59e4998bbd879af619e3,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

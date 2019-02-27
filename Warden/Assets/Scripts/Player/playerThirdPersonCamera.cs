@@ -16,7 +16,7 @@ public class playerThirdPersonCamera : MonoBehaviour
     public Vector2 pitchMinMax = new Vector2(-19, 85);
 
     public Transform target;
-    public float distanceFromTarget = 4;
+    public float distanceFromTarget = 6f;
 
     void LateUpdate()
     {

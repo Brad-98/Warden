@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour
 {
-    public int maxEnemyHealth = 3;
+    public int maxEnemyHealth = 20;
     private int currentEnemyHealth;
-
+   
     Animator enemyAnimations;
     // Start is called before the first frame update
     void Start()
@@ -25,10 +25,14 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider collision)
     {
-        StartCoroutine(Wait());
-        currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().damage;  
+        if (collision.gameObject.tag == "Axe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            Debug.Log(currentEnemyHealth);
+            StartCoroutine(Wait());
+            currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().damage;
+        }
     }
 
     private IEnumerator Wait()
