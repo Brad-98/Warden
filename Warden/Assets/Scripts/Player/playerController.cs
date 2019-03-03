@@ -17,6 +17,9 @@ public class playerController : MonoBehaviour
     public float jumpHeight = 5.0f;
     public float fallingAccleration = 2.5f;
 
+    public int playerHealth = 5;
+    private int currentPlayerHealth;
+
     private bool touchingGround = true;
     
 	void Start ()
@@ -30,11 +33,18 @@ public class playerController : MonoBehaviour
         cameraT = Camera.main.transform;
 
         currentSpeed = moveSpeed;
+
+        currentPlayerHealth = playerHealth;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(currentPlayerHealth == 0)
+        {
+            Destroy(gameObject);
+        }
+
         Vector3 direction = Vector3.zero;
         direction.z = Input.GetAxis("Horizontal");
         direction.x = Input.GetAxis("Vertical");
@@ -129,6 +139,16 @@ public class playerController : MonoBehaviour
         if (playerCollider.gameObject.tag == "ground")
         {
             touchingGround = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "enemySword") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+             Debug.Log(currentPlayerHealth);
+            //StartCoroutine(Wait());
+            currentPlayerHealth -= GameObject.Find("Level2_Enemy").GetComponent<Enemy>().enemyDamageValue;
         }
     }
 }

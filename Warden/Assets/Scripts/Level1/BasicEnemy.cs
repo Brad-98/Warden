@@ -20,7 +20,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if (currentEnemyHealth <= 0)
         {
-            GetComponent<Animator>().enabled = false;
+            //GetComponent<Animator>().enabled = false;
             Destroy(gameObject, 3);
         }
     }
@@ -29,9 +29,9 @@ public class BasicEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Axe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-            Debug.Log(currentEnemyHealth);
+           // Debug.Log(currentEnemyHealth);
             StartCoroutine(Wait());
-            currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().damage;
+            currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
         }
     }
 

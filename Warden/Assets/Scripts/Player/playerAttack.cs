@@ -8,7 +8,7 @@ public class playerAttack : MonoBehaviour
 
     public GameObject playerAxe;
 
-    public int damage = 1;
+    public int playerDamageValue = 1;
 
     public float attackTimer = 1.8f;
     public float attackTimerDelay;
@@ -20,7 +20,7 @@ public class playerAttack : MonoBehaviour
 
 	void Update ()
     {
-        Debug.Log(attackTimerDelay);
+       // Debug.Log(attackTimerDelay);
 
         if (attackTimerDelay <= 0)
         {
