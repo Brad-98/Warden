@@ -13,7 +13,7 @@ public class playerThirdPersonCamera : MonoBehaviour
     float yaw; //Camera's rotation on the y axis
     float pitch; //Camera's rotation on the x axis
 
-    public Vector2 pitchMinMax = new Vector2(-19, 85);
+    public Vector2 pitchMinMax = new Vector2(-17, 85);
 
     public Transform target;
     public float distanceFromTarget = 6f;

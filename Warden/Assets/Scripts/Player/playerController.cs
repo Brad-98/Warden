@@ -146,9 +146,18 @@ public class playerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "enemySword") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-             Debug.Log(currentPlayerHealth);
+             
             //StartCoroutine(Wait());
             currentPlayerHealth -= GameObject.Find("Level2_Enemy").GetComponent<Enemy>().enemyDamageValue;
+            Debug.Log(currentPlayerHealth);
+        }
+
+        if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            
+            //StartCoroutine(Wait());
+            currentPlayerHealth -= collision.gameObject.GetComponent<Fireball>().fireballDamage;
+            Debug.Log(currentPlayerHealth);
         }
     }
 }

@@ -7,6 +7,8 @@ TagManager:
   - ground
   - Axe
   - enemySword
+  - Interact
+  - Fireball
   layers:
   - Default
   - TransparentFX
