@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     public float enemyAttackTimer = 1.5f;
     public float enemyAttackTimerDelay;
+    private bool isAttacking = false;
 
     public GameObject enemySword;
 
@@ -76,7 +77,10 @@ public class Enemy : MonoBehaviour
             enemyAnimations.SetBool("isAttacking", false);
             enemyAnimations.SetBool("isWalking", true);
 
-            currentEnemyMoveSpeed = enemyMoveSpeed;
+            if (isAttacking == false)
+            {
+                currentEnemyMoveSpeed = enemyMoveSpeed;
+            }
         }    
     }
 
@@ -101,7 +105,9 @@ public class Enemy : MonoBehaviour
     {
         enemySword.GetComponent<Collider>().enabled = false;
         enemySword.GetComponent<Collider>().enabled = true;
+        isAttacking = true;
         yield return new WaitForSeconds(0.8f);
+        isAttacking = false;
         enemySword.GetComponent<Collider>().enabled = false;
     }
 }
