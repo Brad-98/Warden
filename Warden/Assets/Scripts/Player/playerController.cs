@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class playerController : MonoBehaviour
@@ -25,6 +26,7 @@ public class playerController : MonoBehaviour
 	void Start ()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         playerRB = GetComponent<Rigidbody>();
 
@@ -43,6 +45,7 @@ public class playerController : MonoBehaviour
         if(currentPlayerHealth == 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("chooseLevel", 0);
         }
 
         Vector3 direction = Vector3.zero;
@@ -53,6 +56,7 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown("escape"))
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         float zAxisSpeed = (Input.GetAxis("Vertical") * currentSpeed) * Time.deltaTime;
