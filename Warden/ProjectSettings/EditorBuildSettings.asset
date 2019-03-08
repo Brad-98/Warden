@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Magic_Wizard/Wizard_V1.unity
     guid: bc1bbefae7b522e418bdc309dec30706
+  - enabled: 1
+    path: Assets/Scenes/Magic_Wizard/Wizard_V2.unity
+    guid: 591726b4bfcf4be49829480d80a1f595
+  - enabled: 1
+    path: Assets/Scenes/Magic_Wizard/Wizard_V3.unity
+    guid: efd5461660ced944cb2373198567b483
   m_configObjects: {}

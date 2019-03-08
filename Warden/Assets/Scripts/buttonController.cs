@@ -30,6 +30,16 @@ public class buttonController : MonoBehaviour
         SceneManager.LoadScene("Wizard_V1", 0);
     }
 
+    public void wizardV2()
+    {
+        SceneManager.LoadScene("Wizard_V2", 0);
+    }
+
+    public void wizardV3()
+    {
+        SceneManager.LoadScene("Wizard_V3", 0);
+    }
+
     public void quit()
     {
         Application.Quit();

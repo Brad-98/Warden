@@ -9,6 +9,7 @@ TagManager:
   - enemySword
   - Interact
   - Fireball
+  - teleportLocation
   layers:
   - Default
   - TransparentFX
