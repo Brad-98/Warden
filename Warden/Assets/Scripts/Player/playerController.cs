@@ -152,8 +152,9 @@ public class playerController : MonoBehaviour
         {
              
             //StartCoroutine(Wait());
-            currentPlayerHealth -= GameObject.Find("Level2_Enemy").GetComponent<Enemy>().enemyDamageValue;
-            Debug.Log(currentPlayerHealth);
+            //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
+            currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;
+            //Debug.Log(currentPlayerHealth);
         }
 
         if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
