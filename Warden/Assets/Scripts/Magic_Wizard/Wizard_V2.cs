@@ -112,7 +112,7 @@ public class Wizard_V2 : MonoBehaviour
 
     void Teleport()
     {
-        //if (GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().teleportPositionDistanceFromPlayer <= 8.0f)
+      // if (GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().teleportPositionDistanceFromPlayer <= 8.0f)
        // {
             //Debug.Log("In Range");
             

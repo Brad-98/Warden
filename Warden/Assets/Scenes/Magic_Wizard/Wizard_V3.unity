@@ -583,7 +583,7 @@ PrefabInstance:
     - target: {fileID: 1902689516, guid: 29c2971eb608f9e41806cd2504c619d5, type: 3}
       propertyPath: enemyMinion
       value: 
-      objectReference: {fileID: 247206234154106172, guid: d6d7e2291b688d94c93250f1c42acf74,
+      objectReference: {fileID: 188327643, guid: d6d7e2291b688d94c93250f1c42acf74,
         type: 3}
     - target: {fileID: 1902689516, guid: 29c2971eb608f9e41806cd2504c619d5, type: 3}
       propertyPath: teleportLocation
