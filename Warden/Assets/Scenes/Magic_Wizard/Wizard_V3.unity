@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 906772797}
   - component: {fileID: 906772796}
   - component: {fileID: 906772799}
+  - component: {fileID: 906772800}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -421,6 +422,19 @@ MonoBehaviour:
   pitchMinMax: {x: -17, y: 85}
   target: {fileID: 298748453}
   distanceFromTarget: 6
+--- !u!114 &906772800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906772795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3ea5ee2ddb95242b69b46e372b9ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPS: 0
 --- !u!1 &1339449262
 GameObject:
   m_ObjectHideFlags: 0
