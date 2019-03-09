@@ -6,11 +6,12 @@ TagManager:
   tags:
   - ground
   - Axe
-  - enemySword
   - Interact
   - Fireball
   - teleportLocation
   - enemyKnight
+  - enemySword1
+  - enemySword2
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,7 @@ public class Knight_V2 : MonoBehaviour
     public float enemyBlockTimer;
     private float currentEnemyBlockTimer;
     private float animationBlockTimer = 6f;
+    private float currentAnimationBlockTimer;
     public GameObject enemySword;
 
     public GameObject playerAxe;
@@ -36,7 +37,9 @@ public class Knight_V2 : MonoBehaviour
 
         currentEnemyMoveSpeed = enemyMoveSpeed;
 
-        enemyBlockTimer = Random.Range(10, 20);
+        currentAnimationBlockTimer = animationBlockTimer;
+
+        enemyBlockTimer = Random.Range(4, 8);
         currentEnemyBlockTimer = enemyBlockTimer;
 
         target = GameObject.Find("Player/enemyTarget").transform;
@@ -92,7 +95,12 @@ public class Knight_V2 : MonoBehaviour
         }
 
         currentEnemyBlockTimer -= Time.deltaTime;
-        
+
+        if (currentAnimationBlockTimer == 0)
+        {
+            currentAnimationBlockTimer = animationBlockTimer;
+        }
+
         if (currentEnemyBlockTimer <= 0)
         {
             
@@ -102,13 +110,12 @@ public class Knight_V2 : MonoBehaviour
             StartCoroutine(blockingTimer());
 
 
-            animationBlockTimer -= Time.deltaTime;
-            
-            if (animationBlockTimer <= 0)
+            currentAnimationBlockTimer -= Time.deltaTime;
+
+            if (currentAnimationBlockTimer <= 0)
             {
                 enemyAnimations.SetBool("isComboAttacking", true);
             }
-            
         }
         else
         {

@@ -105,5 +105,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballSpeed: 10
-  fireballDamage: 0
+  fireballDamage: 1
   timer: 5

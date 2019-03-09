@@ -148,9 +148,17 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "enemySword") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "enemySword1") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
              
+            //StartCoroutine(Wait());
+            currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
+            //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;
+            //Debug.Log(currentPlayerHealth);
+        }
+        if (collision.gameObject.tag == "enemySword2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+
             //StartCoroutine(Wait());
             //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
             currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;

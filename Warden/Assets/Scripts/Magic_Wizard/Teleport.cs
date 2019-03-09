@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour
 
     public GameObject teleportLocation;
 
-    private float teleSpawnTimer = 5.0f;
+    private float teleSpawnTimer = 10.0f;
     public float currentTeleSpawnTimer;
 
     void Start()
