@@ -170,7 +170,7 @@ public class playerController : MonoBehaviour
              
             //StartCoroutine(Wait());
            // currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
-            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
+            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V1>().enemyDamageValue;
             //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;
             //Debug.Log(currentPlayerHealth);
         }

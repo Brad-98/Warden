@@ -15,8 +15,9 @@ public class Wizard_V1 : MonoBehaviour
     public float rangeToAttack = 1.8f;
     private float distanceFromPlayer;
 
-    public float enemyAttackTimer = 1.5f;
+    public float enemyAttackTimer = 5f;
     public float enemyAttackTimerDelay;
+    public bool canAttack = false;
 
     Animator enemyAnimations;
 
@@ -33,6 +34,8 @@ public class Wizard_V1 : MonoBehaviour
         currentEnemyMoveSpeed = enemyMoveSpeed;
 
         enemyAttackTimerDelay = enemyAttackTimer;
+
+      
 
         target = GameObject.Find("Player/enemyTarget").transform;
         
@@ -55,6 +58,9 @@ public class Wizard_V1 : MonoBehaviour
             enemyAttackTimerDelay = 0;
         }
 
+
+        
+
         if (enemyAttackTimerDelay > 0)
         {
             enemyAttackTimerDelay -= Time.deltaTime;
@@ -64,8 +70,11 @@ public class Wizard_V1 : MonoBehaviour
         {
             //enemyAnimations.SetBool("isWalking", false);
             //enemyAnimations.SetBool("isAttacking", true);
-            Instantiate(fireballPrefab, spellLocation.position, spellLocation.rotation);
-            enemyAttackTimerDelay = enemyAttackTimer;
+
+
+            canAttack = true;
+                
+            
         }
 
         distanceFromPlayer = Vector3.Distance(target.position, transform.position);
@@ -100,5 +109,15 @@ public class Wizard_V1 : MonoBehaviour
         enemyAnimations.SetBool("takenDamage", true);
         yield return new WaitForSeconds(1.2f);
         enemyAnimations.SetBool("takenDamage", false);
+    }
+
+    public void castFireball()
+    {
+        if (canAttack == true)
+        {
+            Instantiate(fireballPrefab, spellLocation.position, spellLocation.rotation);
+            canAttack = false;
+            enemyAttackTimerDelay = enemyAttackTimer;
+        }
     }
 }
