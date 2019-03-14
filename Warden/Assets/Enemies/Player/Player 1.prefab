@@ -191,11 +191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c7a80b26e37414dae43ba789011d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealthBar: {fileID: 0}
+  playerSprintBar: {fileID: 0}
   moveSpeed: 2.8
   sprintSpeed: 5
-  jumpHeight: 5
-  fallingAccleration: 2.5
-  playerHealth: 5
 --- !u!114 &1327085174136478518
 MonoBehaviour:
   m_ObjectHideFlags: 0

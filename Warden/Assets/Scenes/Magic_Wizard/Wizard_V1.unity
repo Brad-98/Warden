@@ -1163,6 +1163,16 @@ PrefabInstance:
       propertyPath: enemyAttackTimer
       value: 2.08
       objectReference: {fileID: 0}
+    - target: {fileID: 2894052887143482643, guid: cedfa9c549bd9ef4dafac541409ff6d9,
+        type: 3}
+      propertyPath: maxEnemyHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2894052887143482643, guid: cedfa9c549bd9ef4dafac541409ff6d9,
+        type: 3}
+      propertyPath: enemyMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cedfa9c549bd9ef4dafac541409ff6d9, type: 3}
 --- !u!1 &879207563
