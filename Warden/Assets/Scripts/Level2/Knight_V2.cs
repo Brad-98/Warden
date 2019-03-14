@@ -10,7 +10,7 @@ public class Knight_V2 : MonoBehaviour
     public float enemyMoveSpeed = 2;
     private float currentEnemyMoveSpeed;
 
-    public int enemyDamageValue = 1;
+    public int enemyDamageValue = 10;
 
     public float rangeToAttack = 1.8f;
     private float distanceFromPlayer;
