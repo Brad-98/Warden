@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
-    //private Rigidbody playerRB;
+    private Rigidbody playerRB;
 
     private Animator playerAnimations;
 
@@ -32,7 +32,7 @@ public class playerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-       // playerRB = GetComponent<Rigidbody>();
+        playerRB = GetComponent<Rigidbody>();
 
         playerAnimations = this.gameObject.GetComponent<Animator>();
 
@@ -46,7 +46,9 @@ public class playerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if(playerHealthBar.value <= 0)
+        
+
+        if (playerHealthBar.value <= 0)
         {
             Destroy(gameObject);
             SceneManager.LoadScene("chooseLevel", 0);
@@ -165,30 +167,28 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "enemySword1") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "knightSword_V1") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-             
-            //StartCoroutine(Wait());
-           // currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
-            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V1>().enemyDamageValue;
-            //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;
-            //Debug.Log(currentPlayerHealth);
+            GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightSword.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightDamageValue;
         }
-        if (collision.gameObject.tag == "enemySword2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
-        {
 
-            //StartCoroutine(Wait());
-            //currentPlayerHealth -= GameObject.FindWithTag("enemyKnight").GetComponent<Enemy>().enemyDamageValue;
-            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<Knight_V2>().enemyDamageValue;
-            //Debug.Log(currentPlayerHealth);
+        if (collision.gameObject.tag == "knightSword_V2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightSword.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightDamageValue;
+        }
+
+        if (collision.gameObject.tag == "knightFoot") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFoot.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFootDamageValue;
+            playerRB.AddForce(transform.forward * -250);
         }
 
         if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-
-            //StartCoroutine(Wait());
             playerHealthBar.value -= collision.gameObject.GetComponent<Fireball>().fireballDamage;
-          //  Debug.Log(currentPlayerHealth);
         }
     }
 }

@@ -5,13 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
-  - Axe
   - Interact
   - Fireball
   - teleportLocation
   - enemyKnight
-  - enemySword1
-  - enemySword2
+  - knightSword_V1
+  - knightSword_V2
+  - playerAxe
+  - playerAxeBlocking
+  - knightFoot
   layers:
   - Default
   - TransparentFX

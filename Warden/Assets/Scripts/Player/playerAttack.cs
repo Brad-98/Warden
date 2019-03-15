@@ -34,7 +34,15 @@ public class playerAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && (attackTimerDelay == 0))
         {
-            StartCoroutine(enableWeapon());
+            if (GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().isBlocking == false)
+            {
+                StartCoroutine(enableWeapon());
+            }
+            else
+            {
+                StartCoroutine(enableWeaponBlocking());
+            }
+
             attackTimerDelay = attackTimer;
         }
         else
@@ -45,10 +53,17 @@ public class playerAttack : MonoBehaviour
 
     private IEnumerator enableWeapon()
     {
-        playerAxe.GetComponent<Collider>().enabled = false;
         playerAxe.GetComponent<Collider>().enabled = true;
         playerAnimations.SetInteger("isAttacking", Random.Range(1, 3));
         yield return new WaitForSeconds(0.8f);
         playerAxe.GetComponent<Collider>().enabled = false;
+    }
+
+    private IEnumerator enableWeaponBlocking()
+    {
+        GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().playerAxeBlocking.GetComponent<Collider>().enabled = true;
+        playerAnimations.SetInteger("isAttacking", Random.Range(1, 3));
+        yield return new WaitForSeconds(0.8f);
+        GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().playerAxeBlocking.GetComponent<Collider>().enabled = false;
     }
 }
