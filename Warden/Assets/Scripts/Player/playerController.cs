@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
 {
     private Rigidbody playerRB;
 
-    private Animator playerAnimations;
+    public Animator playerAnimations;
 
     public Slider playerHealthBar;
     public Slider playerSprintBar;
@@ -96,12 +96,17 @@ public class playerController : MonoBehaviour
                 playerSprintBar.value += Time.deltaTime;
             }
         }
-        
 
-        if(playerSprintBar.value == 0)
+        if (playerSprintBar.value == 0 && (Input.GetKey(KeyCode.LeftShift)))
         {
-            playerSprintBar.value = 0;
+            currentSpeed = moveSpeed;
         }
+
+        if (playerSprintBar.value == 0 && (!Input.GetKey(KeyCode.LeftShift)))
+        {
+            playerSprintBar.value += Time.deltaTime;
+        }
+       
 
         if (direction.x > 0)
         {
