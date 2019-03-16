@@ -81,6 +81,7 @@ public class knightAttack_V2 : MonoBehaviour
         if (isBlocking == true)
         { 
             playerAxe.GetComponent<Collider>().enabled = false;
+            GameObject.Find("Player").GetComponent<playerAttack>().isKnight_V2Blocking = true;
             //playerAxeBlocking.GetComponent<Collider>().enabled = true;
 
             this.gameObject.GetComponent<knightController>().knightAnimations.SetBool("isBlocking", true);
@@ -91,9 +92,9 @@ public class knightAttack_V2 : MonoBehaviour
         }
         else
         {
-           // playerAxe.GetComponent<Collider>().enabled = true;
-            //playerAxeBlocking.GetComponent<Collider>().enabled = false;
-
+            // playerAxe.GetComponent<Collider>().enabled = true;
+            playerAxeBlocking.GetComponent<Collider>().enabled = false;
+            GameObject.Find("Player").GetComponent<playerAttack>().isKnight_V2Blocking = false;
             this.gameObject.GetComponent<knightController>().knightAnimations.SetBool("isBlocking", false);
             //this.gameObject.GetComponent<knightController>().currentKnightMoveSpeed = this.gameObject.GetComponent<knightController>().knightMoveSpeed;
         }

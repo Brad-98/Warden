@@ -880,7 +880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: 869bfcd3711d81c4b91357c990e9b88c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.17708
+      value: 36.2
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: 869bfcd3711d81c4b91357c990e9b88c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6380,5 +6380,20 @@ PrefabInstance:
       propertyPath: playerSprintBar
       value: 
       objectReference: {fileID: 2051360194}
+    - target: {fileID: 1327085174136478518, guid: e221463e81e15e1499a79e3809500e5c,
+        type: 3}
+      propertyPath: attackTimer
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327085174136478518, guid: e221463e81e15e1499a79e3809500e5c,
+        type: 3}
+      propertyPath: isKnight_V2Blocking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1327085174136478518, guid: e221463e81e15e1499a79e3809500e5c,
+        type: 3}
+      propertyPath: canPlayerAttack
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e221463e81e15e1499a79e3809500e5c, type: 3}

@@ -59039,15 +59039,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: enableWeapon
+  - time: 2.266667
+    functionName: stopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.7333333
-    functionName: disableWeapon
+  - time: 2.266667
+    functionName: stopAnimationKnightBlocking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

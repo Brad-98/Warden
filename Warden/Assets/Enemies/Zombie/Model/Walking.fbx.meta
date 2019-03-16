@@ -144,6 +144,11 @@ ModelImporter:
     13700004: ZombieGirl_Top
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ZombieGirl_Material
+    second: {fileID: 2100000, guid: 6156e0ecd16c0de4e8b012988b1014d2, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: zombie_diffuse

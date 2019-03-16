@@ -10,8 +10,6 @@ public class Wizard_V1 : MonoBehaviour
     public float enemyMoveSpeed = 5;
     private float currentEnemyMoveSpeed;
 
-    public int enemyDamageValue = 1;
-
     public float rangeToAttack = 1.8f;
     private float distanceFromPlayer;
 
@@ -98,7 +96,7 @@ public class Wizard_V1 : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Axe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "playerAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             // Debug.Log(currentEnemyHealth);
             StartCoroutine(Wait());
