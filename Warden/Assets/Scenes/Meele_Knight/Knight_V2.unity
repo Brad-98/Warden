@@ -3275,6 +3275,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 405297193}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1091200583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2074035363932684241, guid: a6734ad5ab33fde45828305301a172ab,
+    type: 3}
+  m_PrefabInstance: {fileID: 1748913637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1097207544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,6 +5092,16 @@ PrefabInstance:
       propertyPath: playerLocation
       value: 
       objectReference: {fileID: 1634723077}
+    - target: {fileID: 6100463417010583204, guid: a6734ad5ab33fde45828305301a172ab,
+        type: 3}
+      propertyPath: swordCollider
+      value: 
+      objectReference: {fileID: 1091200583}
+    - target: {fileID: 6100463417010583204, guid: a6734ad5ab33fde45828305301a172ab,
+        type: 3}
+      propertyPath: maxKnightHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6610475765798672739, guid: a6734ad5ab33fde45828305301a172ab,
         type: 3}
       propertyPath: playerAxe

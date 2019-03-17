@@ -5032,6 +5032,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 801869912}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1719125184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1025422705, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1748913637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1720950640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ebd629ecc08a0441cb8345ee6dc8b0d8,
@@ -5097,6 +5103,14 @@ PrefabInstance:
       propertyPath: playerLocation
       value: 
       objectReference: {fileID: 823997449}
+    - target: {fileID: 41186452, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
+      propertyPath: maxKnightHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 41186452, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
+      propertyPath: swordCollider
+      value: 
+      objectReference: {fileID: 1719125184}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
 --- !u!4 &1762103135 stripped
@@ -6330,6 +6344,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6038721233440799415, guid: e221463e81e15e1499a79e3809500e5c,
+        type: 3}
+      propertyPath: playerHealthBar
+      value: 
+      objectReference: {fileID: 1263728950}
+    - target: {fileID: 6038721233440799415, guid: e221463e81e15e1499a79e3809500e5c,
+        type: 3}
+      propertyPath: playerSprintBar
+      value: 
+      objectReference: {fileID: 1371058628}
     - target: {fileID: 6477142787003683117, guid: e221463e81e15e1499a79e3809500e5c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6345,16 +6369,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.3602402
       objectReference: {fileID: 0}
-    - target: {fileID: 6038721233440799415, guid: e221463e81e15e1499a79e3809500e5c,
-        type: 3}
-      propertyPath: playerHealthBar
-      value: 
-      objectReference: {fileID: 1263728950}
-    - target: {fileID: 6038721233440799415, guid: e221463e81e15e1499a79e3809500e5c,
-        type: 3}
-      propertyPath: playerSprintBar
-      value: 
-      objectReference: {fileID: 1371058628}
     - target: {fileID: 1327085174136478518, guid: e221463e81e15e1499a79e3809500e5c,
         type: 3}
       propertyPath: canPlayerAttack

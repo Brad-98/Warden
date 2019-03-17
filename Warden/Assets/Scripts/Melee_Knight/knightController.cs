@@ -13,6 +13,8 @@ public class knightController : MonoBehaviour
     public Animator knightAnimations;
 
     public Transform playerLocation;
+
+    public GameObject swordCollider;
     
     void Start()
     {
@@ -25,8 +27,14 @@ public class knightController : MonoBehaviour
     {
         if (currentKnightHealth <= 0)
         {
-            //GetComponent<Animator>().enabled = false;
-            Destroy(gameObject, 3);
+            knightAnimations.SetBool("isDead", true);
+            Destroy(gameObject, 10);
+
+            //TODO Make some UI text that says victory!
+            this.gameObject.GetComponent<Collider>().enabled = false;
+            swordCollider.GetComponent<Collider>().enabled = false;
+            this.gameObject.GetComponent<knightController>().enabled = false;
+            //TODO KnightV2 can hit you when it's dead i think is when blocking kick
         }
 
         transform.LookAt(playerLocation.position);
