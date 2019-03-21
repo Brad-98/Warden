@@ -46,8 +46,6 @@ public class playerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
-
         if (playerHealthBar.value <= 0)
         {
             Destroy(gameObject);

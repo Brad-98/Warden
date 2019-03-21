@@ -27,6 +27,7 @@ public class Minion_AI : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         transform.LookAt(target.position);
         transform.position += transform.forward * currentEnemyMoveSpeed * Time.deltaTime;
     }

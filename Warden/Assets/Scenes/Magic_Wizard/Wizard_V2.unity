@@ -629,6 +629,11 @@ PrefabInstance:
       propertyPath: enemyDamageValue
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1296927890166879031, guid: 92096bac2a1f7ce4290f57718e716529,
+        type: 3}
+      propertyPath: maxEnemyHealth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92096bac2a1f7ce4290f57718e716529, type: 3}
 --- !u!1 &858970997
