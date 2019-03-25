@@ -5027,6 +5027,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2049532442}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1662563788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 41186450, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1748913637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1662563789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662563788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886932a6c2e7f6647acb3adef41e9536, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knightMoveSpeed: 2
+  currentKnightMoveSpeed: 0
+  playerLocation: {fileID: 823997449}
+  distanceFromPlayer: 0
+  rangeToAttack: 1.8
+  currentKnightLogicState: 0
 --- !u!4 &1676035207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ebd629ecc08a0441cb8345ee6dc8b0d8,
@@ -5112,6 +5136,14 @@ PrefabInstance:
       propertyPath: swordCollider
       value: 
       objectReference: {fileID: 1719125184}
+    - target: {fileID: 41186452, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 41186451, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27da5e6db9e982f47a7d6ac9b18bcfb4, type: 3}
 --- !u!4 &1762103135 stripped
