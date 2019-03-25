@@ -40,6 +40,21 @@ public class buttonController : MonoBehaviour
         SceneManager.LoadScene("Wizard_V3", 0);
     }
 
+    public void FOVEnemy()
+    {
+        SceneManager.LoadScene("FOV", 0);
+    }
+
+    public void BossCreature()
+    {
+        SceneManager.LoadScene("Boss", 0);
+    }
+
+    public void BossWizard()
+    {
+        SceneManager.LoadScene("Wizard_Boss", 0);
+    }
+
     public void quit()
     {
         Application.Quit();

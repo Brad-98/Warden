@@ -35,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Magic_Wizard/Wizard_V3.unity
     guid: a293ab0d71715004a8bb43686f741605
+  - enabled: 1
+    path: Assets/Scenes/FOV_&_Sound/FOV.unity
+    guid: 9e90fece3e21ff5458c309535ad9295b
+  - enabled: 1
+    path: Assets/Scenes/Boss Battles/Boss.unity
+    guid: d1ea257e86743db42ae34de858afbfbf
+  - enabled: 1
+    path: Assets/Scenes/Boss Battles/Wizard_Boss.unity
+    guid: 765ad7c6245fe1b43a3fce4241177a40
   m_configObjects: {}
