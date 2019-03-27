@@ -18,6 +18,8 @@ public class FOVEnemyLogic : MonoBehaviour
     public float minZ;
     public float maxZ;
 
+    public bool lookingAtWall = false;
+
     public Transform roamLocation;
 
     //Alert Varibles
@@ -31,8 +33,6 @@ public class FOVEnemyLogic : MonoBehaviour
     private float distanceFromPlayer;
     private float angleBetweenPlayerAndEnemy;
     public Transform playerLocation;
-
-    public bool playerInSight = false;
 
     private bool hasSpawnedAlertBox = false;
 
@@ -75,11 +75,13 @@ public class FOVEnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject.Find("FOVKnight/RaycastLocation").transform.LookAt(playerLocation.transform);
+
         playerDirectionFromEnemy = playerLocation.transform.position - transform.position;
         angleBetweenPlayerAndEnemy = Vector3.Angle(playerDirectionFromEnemy, transform.forward);
 
         distanceFromPlayer = Vector3.Distance(playerLocation.position, transform.position);
-  
+
         switch (currentFOVEnemyLogicState)
         {
             case FOVEnemyLogicState.Roaming:
@@ -90,10 +92,24 @@ public class FOVEnemyLogic : MonoBehaviour
 
                 transform.LookAt(roamLocation.position);
                 transform.position = Vector3.MoveTowards(transform.position, roamLocation.position, FOVEnemySpeed * Time.deltaTime);
-
-                if ((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 20))
+                
+                RaycastHit hitWallWhileRoaming;
+               
+                if (Physics.Raycast(GameObject.Find("FOVKnight/RaycastLocation").transform.position, GameObject.Find("FOVKnight/RaycastLocation").transform.forward, out hitWallWhileRoaming))
                 {
-                    currentFOVEnemyLogicState = FOVEnemyLogicState.Alert;
+                    if (hitWallWhileRoaming.collider.gameObject.tag == "Wall")
+                    {
+                        lookingAtWall = true;
+                    }
+                    else
+                    {
+                        lookingAtWall = false;
+                    }
+                }
+                
+                if ((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 20) && lookingAtWall == false)
+                {
+                        currentFOVEnemyLogicState = FOVEnemyLogicState.Alert;
                 }
 
                 if (Vector3.Distance(transform.position, roamLocation.position) < 0.2f)
@@ -118,13 +134,27 @@ public class FOVEnemyLogic : MonoBehaviour
                 FOVEnemyAnimations.SetBool("isWalking", false);
                 FOVEnemyAnimations.SetBool("isAttacking", false);
 
+                RaycastHit hitWallWhileAlert;
+
+                if (Physics.Raycast(GameObject.Find("FOVKnight/RaycastLocation").transform.position, GameObject.Find("FOVKnight/RaycastLocation").transform.forward, out hitWallWhileAlert))
+                {
+                    if (hitWallWhileAlert.collider.gameObject.tag == "Wall")
+                    {
+                        lookingAtWall = true;
+                    }
+                    else
+                    {
+                        lookingAtWall = false;
+                    }
+                }
+
                 if (hasSpawnedAlertBox == false)
                 {
                     Instantiate(alertBox, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
                     hasSpawnedAlertBox = true;
                 }
 
-                if(distanceFromPlayer <= 10)
+                if((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 10) && lookingAtWall == false)
                 {
                     currentFOVEnemyLogicState = FOVEnemyLogicState.Attacking;
                     hasSpawnedAlertBox = false;
@@ -149,6 +179,19 @@ public class FOVEnemyLogic : MonoBehaviour
 
                 transform.LookAt(playerLocation.position);
                 transform.position = Vector3.MoveTowards(transform.position, playerLocation.position, FOVEnemySpeed * Time.deltaTime);
+
+                RaycastHit hitWallWhileAttacking;
+
+                if (Physics.Raycast(GameObject.Find("FOVKnight/RaycastLocation").transform.position, GameObject.Find("FOVKnight/RaycastLocation").transform.forward, out hitWallWhileAttacking))
+                {
+                    if (hitWallWhileAttacking.collider.gameObject.tag == "Wall")
+                    {
+                        alertTimer = 3;
+                        roamTimer = 0;
+                        currentFOVEnemyLogicState = FOVEnemyLogicState.Alert;
+                        Debug.Log("gaty");
+                    }
+                }
 
                 if (enemyAttackTimer <= 0)
                 {

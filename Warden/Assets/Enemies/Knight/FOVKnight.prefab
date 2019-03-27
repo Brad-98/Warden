@@ -449,6 +449,36 @@ Transform:
   m_Father: {fileID: 3944443737101480414}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2073578778695505667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8063534845084478457}
+  m_Layer: 0
+  m_Name: RaycastLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8063534845084478457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073578778695505667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4589977348253392213}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2148666634727862508
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,6 +924,7 @@ Transform:
   - {fileID: 8355310375381214501}
   - {fileID: 7048415329720238478}
   - {fileID: 781565115051385001}
+  - {fileID: 8063534845084478457}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -928,6 +959,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb145bdb8c61874a97e09470d0f19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FOVEnemySpeed: 2
+  roamTimerValue: 3
+  roamTimer: 0
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
+  lookingAtWall: 0
+  playerInSight: 1
+  roamLocation: {fileID: 0}
+  alertTimerValue: 5
+  alertTimer: 0
+  enemyFOV: 40
+  playerLocation: {fileID: 0}
+  alertBox: {fileID: 0}
+  enemyAttackTimerValue: 1.5
+  enemyAttackTimer: 0
+  rangeToAttack: 1.8
   currentFOVEnemyLogicState: 0
 --- !u!1 &2844136237113987378
 GameObject:
