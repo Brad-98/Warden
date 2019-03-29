@@ -2895,6 +2895,7 @@ GameObject:
   - component: {fileID: 7424506824539068724}
   - component: {fileID: 5703876201945519872}
   - component: {fileID: 5030426446598016839}
+  - component: {fileID: 4222899796727579664}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2981,10 +2982,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c7a80b26e37414dae43ba789011d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimations: {fileID: 0}
+  playerHealthBar: {fileID: 0}
+  playerSprintBar: {fileID: 0}
   moveSpeed: 7
   sprintSpeed: 12
-  jumpHeight: 5
-  fallingAccleration: 2.5
 --- !u!114 &5030426446598016839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2998,7 +3000,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAxe: {fileID: 3972454794106987111}
-  damage: 1
+  playerDamageValue: 1
+  canPlayerAttack: 0
+  isKnight_V2Blocking: 0
+  attackTimer: 1.8
+  attackTimerDelay: 0
+--- !u!65 &4222899796727579664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554071275456141002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0.21}
 --- !u!1 &8570568235725329933
 GameObject:
   m_ObjectHideFlags: 0

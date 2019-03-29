@@ -17,6 +17,7 @@ TagManager:
   - Boss
   - Axe
   - Wall
+  - DialogAI
   layers:
   - Default
   - TransparentFX

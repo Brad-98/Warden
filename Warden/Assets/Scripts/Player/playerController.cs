@@ -19,6 +19,8 @@ public class playerController : MonoBehaviour
     public float sprintSpeed = 5.0f;
     private float currentSpeed;
 
+    public bool isTalkingToDialogAI;
+
   //  public float jumpHeight = 5.0f;
   //  public float fallingAccleration = 2.5f;
 
@@ -192,6 +194,19 @@ public class playerController : MonoBehaviour
         if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             playerHealthBar.value -= collision.gameObject.GetComponent<Fireball>().fireballDamage;
+        }
+
+        if (collision.gameObject.tag == "DialogAI") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            isTalkingToDialogAI = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "DialogAI") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            isTalkingToDialogAI = false;
         }
     }
 }
