@@ -2987,6 +2987,7 @@ MonoBehaviour:
   playerSprintBar: {fileID: 0}
   moveSpeed: 7
   sprintSpeed: 12
+  isTalkingToDialogAI: 0
 --- !u!114 &5030426446598016839
 MonoBehaviour:
   m_ObjectHideFlags: 0

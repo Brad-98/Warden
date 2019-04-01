@@ -191,10 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c7a80b26e37414dae43ba789011d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimations: {fileID: 0}
   playerHealthBar: {fileID: 0}
   playerSprintBar: {fileID: 0}
   moveSpeed: 2.8
   sprintSpeed: 5
+  isTalkingToDialogAI: 0
 --- !u!114 &1327085174136478518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAxe: {fileID: 925077571470606597}
   playerDamageValue: 1
+  canPlayerAttack: 0
+  isKnight_V2Blocking: 0
   attackTimer: 1.8
   attackTimerDelay: 0
 --- !u!1 &379084892804762704
