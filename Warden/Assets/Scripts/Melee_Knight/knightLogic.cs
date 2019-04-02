@@ -31,6 +31,7 @@ public class knightLogic : MonoBehaviour
     {
         distanceFromPlayer = Vector3.Distance(playerLocation.position, transform.position);
         transform.LookAt(playerLocation.position);
+
         if (distanceFromPlayer <= rangeToAttack)
         {
             currentKnightLogicState = knightLogicState.Attacking;

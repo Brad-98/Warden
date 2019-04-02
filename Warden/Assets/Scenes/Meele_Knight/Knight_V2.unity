@@ -5103,6 +5103,11 @@ PrefabInstance:
       propertyPath: maxKnightHealth
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6100463417010583204, guid: a6734ad5ab33fde45828305301a172ab,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1634723077}
     - target: {fileID: 6610475765798672739, guid: a6734ad5ab33fde45828305301a172ab,
         type: 3}
       propertyPath: playerAxe
