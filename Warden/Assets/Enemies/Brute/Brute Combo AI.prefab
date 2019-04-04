@@ -999,6 +999,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2677374421352121258}
   - component: {fileID: 3871765805920946821}
+  - component: {fileID: 7746897946226422084}
+  - component: {fileID: 8563069708324949384}
+  - component: {fileID: 8415220559427450022}
   m_Layer: 0
   m_Name: Brute Combo AI
   m_TagString: Untagged
@@ -1042,6 +1045,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &7746897946226422084
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560917734060682061}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8563069708324949384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560917734060682061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf7b21ce07dade47be0566b92f7e798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBruteHealth: 5
+  bruteAxeCollider: {fileID: 0}
+--- !u!114 &8415220559427450022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560917734060682061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2733aa19b1e2a469714216d6c3fea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeLoc: {fileID: 7829571627621296461}
+  mycube: {fileID: 4429075946645487697, guid: 9a17aa51e791b3b4b92e7cfb2c89bf20, type: 3}
+  bruteBody: {fileID: 6469594301539120846}
+  bruteAnimations: {fileID: 3871765805920946821}
+  bruteMoveSpeed: 4
+  currentBruteMoveSpeed: 0
+  playerLocation: {fileID: 0}
+  distanceFromPlayer: 0
+  rangeToAttack: 1.8
+  jumpAttackTimerValue: 10
+  jumpAttackTimer: 0
+  canJumpAttack: 1
+  currentBruteLogicState: 0
 --- !u!1 &3591655857569701094
 GameObject:
   m_ObjectHideFlags: 0

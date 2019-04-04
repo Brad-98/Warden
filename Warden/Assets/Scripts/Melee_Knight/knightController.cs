@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class knightController : MonoBehaviour
 {
@@ -17,17 +16,11 @@ public class knightController : MonoBehaviour
 
     public GameObject swordCollider;
 
-
-    private NavMeshAgent myAgent;
-    public Transform target;
-    
     void Start()
     {
         currentKnightHealth = maxKnightHealth;
 
         currentKnightMoveSpeed = knightMoveSpeed;
-
-        myAgent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -44,9 +37,8 @@ public class knightController : MonoBehaviour
             //TODO KnightV2 can hit you when it's dead i think is when blocking kick
         }
 
-        //transform.LookAt(playerLocation.position);
-        // transform.position += transform.forward * currentKnightMoveSpeed * Time.deltaTime; 
-        myAgent.SetDestination(target.position);
+        transform.LookAt(playerLocation.position);
+        transform.position += transform.forward * currentKnightMoveSpeed * Time.deltaTime;
     }
 
     void OnTriggerEnter(Collider collision)

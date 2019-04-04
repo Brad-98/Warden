@@ -22,7 +22,18 @@ public class bruteComboLogic : MonoBehaviour
 
     public float jumpAttackTimerValue = 25.0f;
     public float jumpAttackTimer;
+
+    public float comboAttackTimerValue = 12.0f;
+    public float comboAttackTimer;
+
     public bool canJumpAttack = false;
+    public bool canComboAttack = false;
+    public bool canComboAttackHealthCheck = false;
+
+    public int howManyNormalAttacks = 0;
+    public bool canDownAttack = false;
+
+    public float bruteDamageValue = 0;
 
     public enum bruteLogicState
     {
@@ -38,6 +49,7 @@ public class bruteComboLogic : MonoBehaviour
     {
         currentBruteMoveSpeed = bruteMoveSpeed;
         jumpAttackTimer = 0;
+        comboAttackTimer = comboAttackTimerValue;
     }
 
     void Update()
@@ -59,6 +71,34 @@ public class bruteComboLogic : MonoBehaviour
             canJumpAttack = true;
         }
 
+        if (canComboAttackHealthCheck == true)
+        {
+            if (comboAttackTimer <= 0)
+            {
+                comboAttackTimer = 0;
+            }
+
+            if (comboAttackTimer > 0)
+            {
+                comboAttackTimer -= Time.deltaTime;
+            }
+
+            if (comboAttackTimer == 0)
+            {
+                canComboAttack = true;
+            }
+        }
+
+        if(howManyNormalAttacks >= 3)
+        {
+            canDownAttack = true;
+        }
+
+        if (this.gameObject.GetComponent<bruteComboController>().currentBruteHealth < 3)
+        {
+            canComboAttackHealthCheck = true;
+        }
+
         switch (currentBruteLogicState)
         {
             case bruteLogicState.Running: 
@@ -68,6 +108,8 @@ public class bruteComboLogic : MonoBehaviour
                 bruteAnimations.SetBool("isRunning", true);
                 bruteAnimations.SetBool("isWalking", false);
                 bruteAnimations.SetBool("isTaunting", false);
+                bruteAnimations.SetBool("isAttacking", false);
+                bruteAnimations.SetBool("isComboAttack", false);
 
                 if (distanceFromPlayer < 6 && canJumpAttack == true)
                 {
@@ -84,7 +126,6 @@ public class bruteComboLogic : MonoBehaviour
             case bruteLogicState.Attacking:
                 bruteAnimations.SetBool("isJumpAttack", false);
                 bruteAnimations.SetBool("isRunning", false);
-                bruteAnimations.SetBool("isWalking", true);
                 
                 transform.position += transform.forward * currentBruteMoveSpeed * Time.deltaTime;
                 transform.LookAt(playerLocation.position);
@@ -94,14 +135,36 @@ public class bruteComboLogic : MonoBehaviour
                     currentBruteLogicState = bruteLogicState.Running;
                 }
 
-                if (distanceFromPlayer < rangeToAttack)
+                if ((distanceFromPlayer < rangeToAttack) && (canComboAttack == false) && (canDownAttack == false))
                 {
                     currentBruteMoveSpeed = 0;
                     bruteAnimations.SetBool("isWalking", false);
+                    bruteAnimations.SetBool("isAttacking", true);
+                }
+                else if((distanceFromPlayer < rangeToAttack) && (canComboAttack == true) && (canDownAttack == false))
+                {
+                    currentBruteMoveSpeed = 0;
+                    canComboAttack = false;
+                    comboAttackTimer = comboAttackTimerValue;
+                    bruteAnimations.SetBool("isWalking", false);
+                    bruteAnimations.SetBool("isAttacking", false);
                     bruteAnimations.SetBool("isComboAttack", true);
+                }
+                else if((distanceFromPlayer < rangeToAttack) && (canComboAttack == false) && (canDownAttack == true))
+                {
+                    currentBruteMoveSpeed = 0;
+                    howManyNormalAttacks = 0;
+                    canDownAttack = false;
+                    bruteAnimations.SetBool("isWalking", false);
+                    bruteAnimations.SetBool("isAttacking", false);
+                    bruteAnimations.SetBool("isComboAttack", false);
+                    bruteAnimations.SetBool("isDownAttack", true);
                 }
                 else
                 {
+                    bruteAnimations.SetBool("isWalking", true);
+                    bruteAnimations.SetBool("isAttacking", false);
+                    bruteAnimations.SetBool("isComboAttack", false);
                     currentBruteMoveSpeed = bruteMoveSpeed / 2;
                 }
 
@@ -119,6 +182,21 @@ public class bruteComboLogic : MonoBehaviour
     void startRunningState() //Taunt Animation
     {
         currentBruteLogicState = bruteLogicState.Running;
+    }
+
+    void howManyNormalAttacksAnimation()
+    {
+        howManyNormalAttacks++;
+    }
+
+    void setComboAttackAnimationToFalse()
+    {
+        bruteAnimations.SetBool("isComboAttack", false);
+    }
+
+    void setDownAttackAnimationToFalse()
+    {
+        bruteAnimations.SetBool("isDownAttack", false);
     }
 
     void spawnCube()

@@ -602,6 +602,16 @@ PrefabInstance:
       propertyPath: playerSprintBar
       value: 
       objectReference: {fileID: 1332783557}
+    - target: {fileID: 5703876201945519872, guid: 3bd8e33681ce59e4998bbd879af619e3,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5703876201945519872, guid: 3bd8e33681ce59e4998bbd879af619e3,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bd8e33681ce59e4998bbd879af619e3, type: 3}
 --- !u!1 &877085228

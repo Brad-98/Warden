@@ -157,12 +157,14 @@ public class FOVEnemyLogic : MonoBehaviour
                 if((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 10) && lookingAtWall == false)
                 {
                     currentFOVEnemyLogicState = FOVEnemyLogicState.Attacking;
+                    Destroy(GameObject.Find("alertBox(Clone)"));
                     hasSpawnedAlertBox = false;
                 }
 
                 if(alertTimer <= 0)
                 {
                     currentFOVEnemyLogicState = FOVEnemyLogicState.Roaming;
+                    Destroy(GameObject.Find("alertBox(Clone)"));
                     alertTimer = alertTimerValue;
                     hasSpawnedAlertBox = false;
                 }
@@ -189,7 +191,7 @@ public class FOVEnemyLogic : MonoBehaviour
                         alertTimer = 3;
                         roamTimer = 0;
                         currentFOVEnemyLogicState = FOVEnemyLogicState.Alert;
-                        Debug.Log("gaty");
+                        Destroy(GameObject.Find("alertBox(Clone)"));
                     }
                 }
 
