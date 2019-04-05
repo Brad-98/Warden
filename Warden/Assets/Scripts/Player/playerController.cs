@@ -50,8 +50,8 @@ public class playerController : MonoBehaviour
     {
         if (playerHealthBar.value <= 0)
         {
-            Destroy(gameObject);
-            SceneManager.LoadScene("chooseLevel", 0);
+            playerAnimations.SetBool("isDead", true);
+            StartCoroutine(goToChooseLevelScene());
         }
 
         Vector3 direction = Vector3.zero;
@@ -88,11 +88,13 @@ public class playerController : MonoBehaviour
             if ((Input.GetKey(KeyCode.LeftShift)) && (Input.GetKey(KeyCode.W)) && (!Input.GetKey(KeyCode.A)) && (!Input.GetKey(KeyCode.D)) && (!Input.GetKey(KeyCode.S)))
             {
                 currentSpeed = sprintSpeed;
+                playerAnimations.SetBool("isRunning", true);
                 playerSprintBar.value -= Time.deltaTime;
             }
             else
             {
                 currentSpeed = moveSpeed;
+                playerAnimations.SetBool("isRunning", false);
                 playerSprintBar.value += Time.deltaTime;
             }
         }
@@ -208,5 +210,11 @@ public class playerController : MonoBehaviour
         {
             isTalkingToDialogAI = false;
         }
+    }
+
+    IEnumerator goToChooseLevelScene()
+    {
+        yield return new WaitForSeconds(9.0f);
+        SceneManager.LoadScene("chooseLevel", 0);
     }
 }

@@ -45,7 +45,7 @@ public class knightController : MonoBehaviour
     {
         if (collision.gameObject.tag == "playerAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-            GameObject.Find("Player").GetComponent<playerAttack>().playerAxe.GetComponent<Collider>().enabled = false;
+            GameObject.Find("Player").GetComponent<playerAttack>().playerSwordCollider.GetComponent<Collider>().enabled = false;
             StartCoroutine(Wait());
             currentKnightHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
         }
