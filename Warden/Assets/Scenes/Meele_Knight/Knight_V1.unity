@@ -6438,11 +6438,6 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6080273817823732634, guid: 23636bcecd4a1c244b2e38152a6d75f3,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.92
-      objectReference: {fileID: 0}
     - target: {fileID: 6138274250353135588, guid: 23636bcecd4a1c244b2e38152a6d75f3,
         type: 3}
       propertyPath: playerAnimations

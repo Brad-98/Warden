@@ -31,8 +31,6 @@ public class Wizard_V3 : MonoBehaviour
 
     Transform target;
 
-    public GameObject teleportLocation;
-
     public Transform spellLocation;
 
     public GameObject fireballPrefab;
@@ -73,14 +71,7 @@ public class Wizard_V3 : MonoBehaviour
 
         if (currentMinionSpawnTimer == 0)
         {
-            Instantiate(enemyMinion, spawnMinionLocation1.transform.position, Quaternion.identity);
-            Instantiate(enemyMinion, spawnMinionLocation2.transform.position, Quaternion.identity);
-            currentMinionSpawnTimer = minionSpawnTimer;
-        }
-
-        if (GameObject.FindWithTag("teleportLocation") != null)
-        {
-            Teleport();
+            enemyAnimations.SetBool("isSummoning", true);
         }
 
         transform.LookAt(target.position);
@@ -158,19 +149,11 @@ public class Wizard_V3 : MonoBehaviour
         }
     }
 
-    void Teleport()
+    void Summon()
     {
-        // if (GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().teleportPositionDistanceFromPlayer <= 8.0f)
-        // {
-        //Debug.Log("In Range");
-
-        //GameObject.Find("Teleport Field").GetComponent<Teleport>().currentTeleSpawnTimer = 0.1f;
-        //Destroy(GameObject.FindWithTag("teleportLocation"));
-        //}
-        //else
-        // {
-        //Debug.Log("Not In Range");
-        transform.position = GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().myPosition;
-        //}
+        Instantiate(enemyMinion, spawnMinionLocation1.transform.position, Quaternion.identity);
+        Instantiate(enemyMinion, spawnMinionLocation2.transform.position, Quaternion.identity);
+        currentMinionSpawnTimer = minionSpawnTimer;
+        enemyAnimations.SetBool("isSummoning", false);
     }
 }

@@ -26,6 +26,8 @@ public class Wizard_V2 : MonoBehaviour
 
     public GameObject teleportLocation;
 
+    public GameObject smokeEffect;
+
     public Transform spellLocation;
 
     public GameObject fireballPrefab;
@@ -56,7 +58,7 @@ public class Wizard_V2 : MonoBehaviour
 
         if (GameObject.FindWithTag("teleportLocation") != null)
         {
-            Teleport();
+            enemyAnimations.SetBool("isTeleporting", true);
         }
 
         transform.LookAt(target.position);
@@ -136,17 +138,13 @@ public class Wizard_V2 : MonoBehaviour
 
     void Teleport()
     {
-        // if (GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().teleportPositionDistanceFromPlayer <= 8.0f)
-        // {
-        //Debug.Log("In Range");
-
-        //GameObject.Find("Teleport Field").GetComponent<Teleport>().currentTeleSpawnTimer = 0.1f;
-        //Destroy(GameObject.FindWithTag("teleportLocation"));
-        //}
-        //else
-        // {
-        //Debug.Log("Not In Range");
+        enemyAnimations.SetBool("isTeleporting", false);
         transform.position = GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().myPosition;
-        //}
+        Destroy(GameObject.FindWithTag("teleportLocation"));
+    }
+
+    void smokeEffectAnimation()
+    {
+        Instantiate(smokeEffect, transform.position, Quaternion.identity);
     }
 }

@@ -16,11 +16,4 @@ public class getTeleportPosition : MonoBehaviour
         myPosition = transform.position;
         //target = GameObject.Find("Player/enemyTarget").transform;
     }
-
-    void Update()
-    {
-        //teleportPositionDistanceFromPlayer = Vector3.Distance(target.position, myPosition);
-
-        Destroy(gameObject);
-    }
 }
