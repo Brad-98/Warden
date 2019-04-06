@@ -50,6 +50,7 @@ public class Wizard_V2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         if (currentEnemyHealth <= 0)
         {
             //GetComponent<Animator>().enabled = false;
@@ -139,6 +140,7 @@ public class Wizard_V2 : MonoBehaviour
     void Teleport()
     {
         enemyAnimations.SetBool("isTeleporting", false);
+        currentRunBackwardsTimer = runBackwardsTimer;
         transform.position = GameObject.FindWithTag("teleportLocation").GetComponent<getTeleportPosition>().myPosition;
         Destroy(GameObject.FindWithTag("teleportLocation"));
     }

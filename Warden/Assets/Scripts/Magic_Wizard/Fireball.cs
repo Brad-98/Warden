@@ -12,19 +12,9 @@ public class Fireball : MonoBehaviour
 
     public float timer = 5f;
 
-    private void Start()
-    {
-        //transform.rotation = Quaternion.Euler(-90, 0, 0);
-    }
     void Update()
     {
-
-        //Vector3 velocity = new Vector3(0, speed * Time.deltaTime, 0);
-
         transform.position += transform.forward * fireballSpeed * Time.deltaTime;
-        
-
-
 
         timer -= Time.deltaTime;
 
@@ -36,7 +26,7 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "ground")
+        if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
             Instantiate(explosion, transform.position, transform.rotation);

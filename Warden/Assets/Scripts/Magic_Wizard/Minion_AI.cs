@@ -5,17 +5,28 @@ using UnityEngine;
 public class Minion_AI : MonoBehaviour
 {
     public float enemyMoveSpeed;
+    public float chosenSpeed;
 
     public Animator minionAnimations;
 
     public int maxEnemyHealth = 1;
     private int currentEnemyHealth;
 
+    public float rangeToAttack = 1.8f;
+    private float distanceFromPlayer;
+
+    public float minionDamageValue = 1;
+
+    public bool isAttacking;
+
+    public Collider minionCollider;
+    public GameObject minionAttackCollider;
     Transform target;
     
     void Start()
     {
-        enemyMoveSpeed = Random.Range(2, 5);
+        enemyMoveSpeed = Random.Range(1, 6);
+        chosenSpeed = enemyMoveSpeed;
 
         currentEnemyHealth = maxEnemyHealth;
 
@@ -24,10 +35,15 @@ public class Minion_AI : MonoBehaviour
 
     void Update()
     {
-        if(currentEnemyHealth <= 0)
+        distanceFromPlayer = Vector3.Distance(target.position, transform.position);
+
+        if (currentEnemyHealth <= 0)
         {
             minionAnimations.SetBool("isDead", true);
+            minionAttackCollider.GetComponent<Collider>().enabled = false;
             this.gameObject.GetComponent<Collider>().enabled = false;
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            minionCollider.enabled = false;
             this.gameObject.GetComponent<Minion_AI>().enabled = false;
         }
 
@@ -37,17 +53,38 @@ public class Minion_AI : MonoBehaviour
         }
 
         transform.LookAt(target.position);
-        transform.position += transform.forward * enemyMoveSpeed * Time.deltaTime;
+        transform.position += transform.forward * chosenSpeed * Time.deltaTime;
+
+        if (distanceFromPlayer <= rangeToAttack)
+        {  
+            minionAnimations.SetBool("isAttacking", true);
+            isAttacking = true;
+        }
+
+        if(isAttacking == false)
+        {
+            chosenSpeed = enemyMoveSpeed;
+        }
     }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "playerAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
-
             //StartCoroutine(Wait());
             currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
-            //Debug.Log(currentEnemyHealth);
         }
+    }
+
+    void stopAttackAnimation()
+    {
+        isAttacking = false;
+        minionAnimations.SetBool("isAttacking", false);
+    }
+
+    void enableAttackCollider()
+    {
+        minionAttackCollider.GetComponent<Collider>().enabled = true;
+        chosenSpeed = 0;
     }
 }

@@ -53,6 +53,7 @@ public class Wizard_V3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         if (currentEnemyHealth <= 0)
         {
             //GetComponent<Animator>().enabled = false;
@@ -72,6 +73,7 @@ public class Wizard_V3 : MonoBehaviour
         if (currentMinionSpawnTimer == 0)
         {
             enemyAnimations.SetBool("isSummoning", true);
+            currentEnemyMoveSpeed = 0;
         }
 
         transform.LookAt(target.position);
@@ -155,5 +157,6 @@ public class Wizard_V3 : MonoBehaviour
         Instantiate(enemyMinion, spawnMinionLocation2.transform.position, Quaternion.identity);
         currentMinionSpawnTimer = minionSpawnTimer;
         enemyAnimations.SetBool("isSummoning", false);
+        currentEnemyMoveSpeed = enemyMoveSpeed;
     }
 }

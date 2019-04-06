@@ -550,6 +550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4099706803735176204, guid: 23636bcecd4a1c244b2e38152a6d75f3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7741631131104864645, guid: 23636bcecd4a1c244b2e38152a6d75f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1544,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5163436
+      value: 2.286
       objectReference: {fileID: 0}
     - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
@@ -1554,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.6626496
+      value: 0.59
       objectReference: {fileID: 0}
     - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
@@ -1596,6 +1601,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494721702592920375, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2538116264553149045, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
       propertyPath: enemyMinion
@@ -1629,9 +1649,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3734956619480859939, guid: ab48a25d9f1b89448aad2d02ae6b86fa,
         type: 3}
+    - target: {fileID: 2538116264553149045, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: maxEnemyHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538116264553149045, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: enemyMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5823289492504523870, guid: dde41f095b8ded54eaf642be47356cac,
         type: 3}
       propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5823289492504523870, guid: dde41f095b8ded54eaf642be47356cac,
+        type: 3}
+      propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

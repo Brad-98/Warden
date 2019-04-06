@@ -101,11 +101,13 @@ public class playerController : MonoBehaviour
 
         if (playerSprintBar.value == 0 && (Input.GetKey(KeyCode.LeftShift)))
         {
+            playerAnimations.SetBool("isRunning", false);
             currentSpeed = moveSpeed;
         }
 
         if (playerSprintBar.value == 0 && (!Input.GetKey(KeyCode.LeftShift)))
         {
+            playerAnimations.SetBool("isRunning", false);
             playerSprintBar.value += Time.deltaTime;
         }
        
@@ -178,6 +180,12 @@ public class playerController : MonoBehaviour
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightDamageValue;
+        }
+
+        if (collision.gameObject.tag == "minionAttackCollider") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionAttackCollider.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionDamageValue;
         }
 
         if (collision.gameObject.tag == "knightSword_V2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
