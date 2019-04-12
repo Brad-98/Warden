@@ -45,6 +45,8 @@ public class Wizard_V2 : MonoBehaviour
         target = GameObject.Find("Player/enemyTarget").transform;
 
         enemyAnimations = this.gameObject.GetComponent<Animator>();
+
+        canAttack = true;
     }
 
     // Update is called once per frame

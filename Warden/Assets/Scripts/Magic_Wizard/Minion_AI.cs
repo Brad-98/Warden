@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Minion_AI : MonoBehaviour
@@ -22,7 +24,12 @@ public class Minion_AI : MonoBehaviour
     public Collider minionCollider;
     public GameObject minionAttackCollider;
     Transform target;
-    
+
+    // NAVMESH
+    private NavMeshAgent myAgent;
+
+    Scene currentScene;
+
     void Start()
     {
         enemyMoveSpeed = Random.Range(1, 6);
@@ -31,10 +38,18 @@ public class Minion_AI : MonoBehaviour
         currentEnemyHealth = maxEnemyHealth;
 
         target = GameObject.Find("Player/enemyTarget").transform;
+
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        if(currentScene.name == "Pathfinding")
+        {
+            myAgent = GetComponent<NavMeshAgent>();
+        }
     }
 
     void Update()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
         distanceFromPlayer = Vector3.Distance(target.position, transform.position);
 
         if (currentEnemyHealth <= 0)
@@ -53,7 +68,17 @@ public class Minion_AI : MonoBehaviour
         }
 
         transform.LookAt(target.position);
-        transform.position += transform.forward * chosenSpeed * Time.deltaTime;
+
+        if (currentScene.name == "Pathfinding")
+        {
+            myAgent.SetDestination(target.position);
+            this.gameObject.GetComponent<NavMeshAgent>().speed = chosenSpeed;
+        }
+        else
+        { 
+            transform.position += transform.forward * chosenSpeed * Time.deltaTime;
+        }
+        
 
         if (distanceFromPlayer <= rangeToAttack)
         {  
@@ -85,6 +110,13 @@ public class Minion_AI : MonoBehaviour
     void enableAttackCollider()
     {
         minionAttackCollider.GetComponent<Collider>().enabled = true;
-        chosenSpeed = 0;
+        if (currentScene.name == "Pathfinding")
+        {
+            this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
+        }
+        else
+        {
+            chosenSpeed = 0;
+        }
     }
 }

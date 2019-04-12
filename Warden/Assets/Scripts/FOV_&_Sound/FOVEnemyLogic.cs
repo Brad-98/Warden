@@ -150,7 +150,7 @@ public class FOVEnemyLogic : MonoBehaviour
 
                 if (hasSpawnedAlertBox == false)
                 {
-                    Instantiate(alertBox, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), Quaternion.identity);
+                    Instantiate(alertBox, new Vector3(transform.position.x, transform.position.y + 2.7f, transform.position.z), Quaternion.identity);
                     hasSpawnedAlertBox = true;
                 }
 

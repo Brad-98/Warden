@@ -17,8 +17,9 @@ public class playerController : MonoBehaviour
 
     public float moveSpeed = 2.8f;
     public float sprintSpeed = 5.0f;
-    private float currentSpeed;
+    public float currentSpeed;
 
+    public bool isPlayerSpinting;
     public bool isTalkingToDialogAI;
 
   //  public float jumpHeight = 5.0f;
@@ -48,6 +49,22 @@ public class playerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(this.gameObject.GetComponent<playerBlocking>().playerBlockingForward == true)
+        {
+            currentSpeed = 0;
+        }
+        else
+        {
+            if (isPlayerSpinting == true)
+            {
+                currentSpeed = sprintSpeed;
+            }
+            else
+            {
+                currentSpeed = moveSpeed;
+            }
+        }
+
         if (playerHealthBar.value <= 0)
         {
             playerAnimations.SetBool("isDead", true);
@@ -87,12 +104,14 @@ public class playerController : MonoBehaviour
         {
             if ((Input.GetKey(KeyCode.LeftShift)) && (Input.GetKey(KeyCode.W)) && (!Input.GetKey(KeyCode.A)) && (!Input.GetKey(KeyCode.D)) && (!Input.GetKey(KeyCode.S)))
             {
+                isPlayerSpinting = true;
                 currentSpeed = sprintSpeed;
                 playerAnimations.SetBool("isRunning", true);
                 playerSprintBar.value -= Time.deltaTime;
             }
             else
             {
+                isPlayerSpinting = false;
                 currentSpeed = moveSpeed;
                 playerAnimations.SetBool("isRunning", false);
                 playerSprintBar.value += Time.deltaTime;
@@ -110,7 +129,21 @@ public class playerController : MonoBehaviour
             playerAnimations.SetBool("isRunning", false);
             playerSprintBar.value += Time.deltaTime;
         }
-       
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
+        }
 
         if (direction.x > 0)
         {
@@ -124,6 +157,7 @@ public class playerController : MonoBehaviour
         if (direction.x < 0)
         {
             playerAnimations.SetBool("isWalkingBackwards", true);
+            playerAnimations.SetBool("isBlocking", false);
         }
         else
         {

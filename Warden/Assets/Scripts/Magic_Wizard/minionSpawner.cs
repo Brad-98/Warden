@@ -22,7 +22,6 @@ public class minionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(spawnTimer);
         if(currentSpawnTimer > 0)
         {
             currentSpawnTimer -= Time.deltaTime;
