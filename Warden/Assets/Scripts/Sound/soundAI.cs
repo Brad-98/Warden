@@ -31,7 +31,7 @@ public class soundAI : MonoBehaviour
 
     private bool hasSpawnedAlertBox = false;
 
-    public Quaternion lookAtRockAngle;
+    public Vector3 lookAtRockAngle;
 
     public GameObject alertBox;
 
@@ -55,30 +55,29 @@ public class soundAI : MonoBehaviour
 
     void Update()
     {
-        if(GameObject.Find("Rock(Clone)"))
+        if(GameObject.Find("Rock(Clone)") && GameObject.Find("Rock(Clone)").GetComponent<rockController>().rockTouchingGround == true)
         {
             distanceFromRock = Vector3.Distance(GameObject.Find("Rock(Clone)").transform.position, transform.position);
         }
-
+        else
+        {
+            distanceFromRock = 0;
+        }
+        
         switch (currentKnightLogicState)
         {
             case knightLogicState.Roaming:
 
                 FOVEnemyAnimations.SetBool("isWalking", true);
                 FOVEnemyAnimations.SetBool("isIdle", false);
+                FOVEnemyAnimations.SetBool("isRunning", false);
 
                 transform.LookAt(roamLocation.position);
                 transform.position = Vector3.MoveTowards(transform.position, roamLocation.position, soundEnemySpeed * Time.deltaTime);
 
-             /*   if ((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 20) && lookingAtWall == false)
+                if(GameObject.Find("Rock(Clone)") && GameObject.Find("Rock(Clone)").GetComponent<rockController>().rockTouchingGround == true)
                 {
-                    currentFOVEnemyLogicState = FOVEnemyLogicState.Alert;
-                }*/
-
-                if(rockHitGround == true)
-                {
-                    Quaternion chooseAngle = Quaternion.Euler(0, Random.Range(-distanceFromRock, distanceFromRock), 0);
-                    lookAtRockAngle = chooseAngle;
+                    lookAtRockAngle = new Vector3(Random.Range(-distanceFromRock, distanceFromRock) * 1.5f, 0, 0);
                     currentKnightLogicState = knightLogicState.Alert;
                 }
                 
@@ -100,39 +99,59 @@ public class soundAI : MonoBehaviour
 
             case knightLogicState.Alert:
 
-                //  FOVEnemyAnimations.SetBool("isIdle", true);
-                //  FOVEnemyAnimations.SetBool("isWalking", false);
-                //  FOVEnemyAnimations.SetBool("isAttacking", false);
-                rockHitGround = false;
-                transform.LookAt(GameObject.Find("rock(Clone)").transform.position);
-                //transform.rotation = lookAtRockAngle;
+                FOVEnemyAnimations.SetBool("isIdle", true);
+                FOVEnemyAnimations.SetBool("isWalking", false);
+                FOVEnemyAnimations.SetBool("isRunning", false);
+
+                if (GameObject.Find("Rock(Clone)").GetComponent<rockController>().rockTouchingGround == true)
+                {
+                    transform.LookAt(GameObject.Find("Rock(Clone)").transform.position + lookAtRockAngle);
+                }
+
+                if(lookAtRockAngle.x <= 6 && lookAtRockAngle.x >= -6)
+                {
+                    currentKnightLogicState = knightLogicState.Investigate;
+                }
+
                 if (hasSpawnedAlertBox == false)
                 {
                     Instantiate(alertBox, new Vector3(transform.position.x, transform.position.y + 2.7f, transform.position.z), Quaternion.identity);
                     hasSpawnedAlertBox = true;
                 }
 
-                /*if ((angleBetweenPlayerAndEnemy < enemyFOV) && (distanceFromPlayer <= 10) && lookingAtWall == false)
-                {
-                    currentFOVEnemyLogicState = FOVEnemyLogicState.Attacking;
-                    Destroy(GameObject.Find("alertBox(Clone)"));
-                    hasSpawnedAlertBox = false;
-                }
-
                 if (alertTimer <= 0)
                 {
-                    currentFOVEnemyLogicState = FOVEnemyLogicState.Roaming;
+                    currentKnightLogicState = knightLogicState.Roaming;
                     Destroy(GameObject.Find("alertBox(Clone)"));
                     alertTimer = alertTimerValue;
                     hasSpawnedAlertBox = false;
+                    GameObject.Find("Rock(Clone)").GetComponent<rockController>().rockTouchingGround = false;
                 }
                 else
                 {
                     alertTimer -= Time.deltaTime;
-                }*/
+                }
+
                 break;
 
             case knightLogicState.Investigate:
+
+                Destroy(GameObject.Find("alertBox(Clone)"));
+
+                FOVEnemyAnimations.SetBool("isRunning", true);
+                FOVEnemyAnimations.SetBool("isWalking", false);
+                FOVEnemyAnimations.SetBool("isIdle", false);
+
+                if(distanceFromRock <= 1)
+                {
+                    soundEnemySpeed = 0;
+                    FOVEnemyAnimations.SetBool("isIdle", true);
+                    FOVEnemyAnimations.SetBool("isRunning", false);
+                }
+                
+                transform.LookAt(GameObject.Find("Rock(Clone)").transform.position);
+                transform.position = Vector3.MoveTowards(transform.position, GameObject.Find("Rock(Clone)").transform.position, (soundEnemySpeed * 3) * Time.deltaTime);
+
                 break;  
         }
     }

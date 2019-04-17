@@ -39,7 +39,7 @@ public class Minion_AI : MonoBehaviour
 
         target = GameObject.Find("Player/enemyTarget").transform;
 
-        Scene currentScene = SceneManager.GetActiveScene();
+        currentScene = SceneManager.GetActiveScene();
 
         if(currentScene.name == "Pathfinding")
         {

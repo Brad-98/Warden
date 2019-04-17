@@ -18,7 +18,9 @@ public class playerThrowRock : MonoBehaviour
 
     void throwRock()
     {
+        Destroy(GameObject.Find("Rock(Clone)"));
         Instantiate(rock, spawnRockLocation.position, spawnRockLocation.rotation);
+        GameObject.Find("Rock(Clone)").GetComponent<rockController>().rockTouchingGround = false;
     }
 
     void endThrowAnimation()
