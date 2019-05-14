@@ -10,9 +10,20 @@ public class buttonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
     public void mainMenuToChooseLevel()
     {  
         SceneManager.LoadScene("chooseLevel", 0);
+    }
+
+    public void mainMenuToControls()
+    {
+        SceneManager.LoadScene("Controls", 0);
+    }
+
+    public void controlsToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu", 0);
     }
 
     public void knightV2()
@@ -20,7 +31,6 @@ public class buttonController : MonoBehaviour
         SceneManager.LoadScene("Knight_V2", 0);
     }
 
-   
     public void wizardV2()
     {
         SceneManager.LoadScene("Wizard_V2", 0);
@@ -30,7 +40,6 @@ public class buttonController : MonoBehaviour
     {
         SceneManager.LoadScene("Wizard_V3", 0);
     }
-
 
     public void FOVEnemy()
     {
@@ -42,11 +51,6 @@ public class buttonController : MonoBehaviour
         SceneManager.LoadScene("AdvancedAI_Combo", 0);
     }
 
-   /* public void dialog()
-    {
-        SceneManager.LoadScene("Dialog", 0);
-    } */
-
     public void pathfinding()
     {
         SceneManager.LoadScene("Pathfinding", 0);
@@ -57,6 +61,15 @@ public class buttonController : MonoBehaviour
         SceneManager.LoadScene("ThrowRock", 0);
     }
 
+    public void boss()
+    {
+        SceneManager.LoadScene("Boss", 0);
+    }
+
+    public void scout()
+    {
+        SceneManager.LoadScene("Scout", 0);
+    }
 
     public void quit()
     {

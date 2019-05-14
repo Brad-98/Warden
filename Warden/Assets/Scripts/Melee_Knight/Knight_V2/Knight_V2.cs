@@ -30,6 +30,8 @@ public class Knight_V2 : MonoBehaviour
     Animator enemyAnimations;
 
     Transform target;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,8 @@ public class Knight_V2 : MonoBehaviour
         target = GameObject.Find("Player/enemyTarget").transform;
 
         enemyAnimations = this.gameObject.GetComponent<Animator>();
+
+        
     }
 
     // Update is called once per frame
@@ -132,6 +136,7 @@ public class Knight_V2 : MonoBehaviour
         {
              
             StartCoroutine(Wait());
+            
             currentEnemyHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
             //Debug.Log(currentEnemyHealth);
         }

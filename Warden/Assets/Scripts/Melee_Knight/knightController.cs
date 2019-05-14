@@ -16,11 +16,16 @@ public class knightController : MonoBehaviour
 
     public GameObject swordCollider;
 
+    public AudioClip hitEffect;
+    public AudioSource hitEffectSource;
+
     void Start()
     {
         currentKnightHealth = maxKnightHealth;
 
         currentKnightMoveSpeed = knightMoveSpeed;
+
+        hitEffectSource.clip = hitEffect;
     }
 
     void Update()
@@ -48,6 +53,7 @@ public class knightController : MonoBehaviour
             GameObject.Find("Player").GetComponent<playerAttack>().playerSwordCollider.GetComponent<Collider>().enabled = false;
             StartCoroutine(Wait());
             currentKnightHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "playerAxeBlocking")

@@ -34,15 +34,14 @@ public class bruteComboController : MonoBehaviour
         if (collision.gameObject.tag == "playerAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             GameObject.Find("Player").GetComponent<playerAttack>().playerSwordCollider.GetComponent<Collider>().enabled = false;
-            //StartCoroutine(Wait());
+            this.gameObject.GetComponent<bruteComboLogic>().comboEnemyAxe.GetComponent<Collider>().enabled = false;
+            this.gameObject.GetComponent<bruteComboLogic>().bruteAnimations.SetBool("isHit", true);
             currentBruteHealth -= GameObject.Find("Player").GetComponent<playerAttack>().playerDamageValue;
         }
     }
 
-   /* private IEnumerator Wait()
+    void endHitAnimation()
     {
-        knightAnimations.SetBool("takenDamage", true);
-        yield return new WaitForSeconds(1.2f);
-        knightAnimations.SetBool("takenDamage", false);
-    }*/
+        this.gameObject.GetComponent<bruteComboLogic>().bruteAnimations.SetBool("isHit", false);
+    }
 }

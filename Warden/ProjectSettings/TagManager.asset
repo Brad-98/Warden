@@ -20,6 +20,13 @@ TagManager:
   - DialogAI
   - minionAttackCollider
   - minion
+  - scoutEnemyFriend
+  - scout
+  - scoutFriend
+  - scoutFriendSword
+  - comboEnemyAxe
+  - comboEnemy
+  - bossHand
   layers:
   - Default
   - TransparentFX

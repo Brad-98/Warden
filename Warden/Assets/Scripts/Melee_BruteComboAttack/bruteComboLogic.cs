@@ -12,6 +12,10 @@ public class bruteComboLogic : MonoBehaviour
 
     public Animator bruteAnimations;
 
+    public GameObject comboEnemyAxe;
+    public GameObject jumpAttackCollider;
+    public float comboEnemyDamageValue;
+
     public float bruteMoveSpeed = 2;
     public float currentBruteMoveSpeed;
 
@@ -23,9 +27,13 @@ public class bruteComboLogic : MonoBehaviour
     public float jumpAttackTimerValue = 25.0f;
     public float jumpAttackTimer;
 
-    public float comboAttackTimerValue = 12.0f;
+    public float comboAttackTimerValue = 9.0f;
     public float comboAttackTimer;
 
+    public float comboRollTimerValue = 6.0f;
+    public float comboRollTimer;
+
+    public bool canRoll = false;
     public bool canJumpAttack = false;
     public bool canComboAttack = false;
     public bool canComboAttackHealthCheck = false;
@@ -69,6 +77,21 @@ public class bruteComboLogic : MonoBehaviour
         if(jumpAttackTimer == 0)
         {
             canJumpAttack = true;
+        }
+
+        if (comboRollTimer <= 0)
+        {
+            comboRollTimer = 0;
+        }
+
+        if (comboRollTimer > 0)
+        {
+            comboRollTimer -= Time.deltaTime;
+        }
+
+        if (comboRollTimer == 0)
+        {
+            canRoll = true;
         }
 
         if (canComboAttackHealthCheck == true)
@@ -166,12 +189,20 @@ public class bruteComboLogic : MonoBehaviour
                     bruteAnimations.SetBool("isAttacking", false);
                     bruteAnimations.SetBool("isComboAttack", false);
                     currentBruteMoveSpeed = bruteMoveSpeed / 2;
+
+                    if(canRoll == true)
+                    {
+                        bruteAnimations.SetBool("isRolling", true);
+                        canRoll = false;
+                        comboRollTimer = comboRollTimerValue;
+                    }
                 }
 
                 break;
 
             case bruteLogicState.JumpAttack:
                 bruteAnimations.SetBool("isJumpAttack", true);
+                bruteAnimations.SetBool("isRolling", false);
                 bruteAnimations.SetBool("isRunning", false);
                 canJumpAttack = false;
                 jumpAttackTimer = jumpAttackTimerValue;
@@ -209,7 +240,8 @@ public class bruteComboLogic : MonoBehaviour
         // StartCoroutine(WaitFive());
         transform.position = GameObject.Find("jumpAttackLocationPrefab(Clone)").transform.position;
         Destroy(GameObject.Find("jumpAttackLocationPrefab(Clone)"));
-        
+        jumpAttackCollider.GetComponent<Collider>().enabled = false;
+
         currentBruteMoveSpeed = 0;
     }
 
@@ -225,11 +257,38 @@ public class bruteComboLogic : MonoBehaviour
         bruteBody.SetActive(false);
     }
 
-   /* IEnumerator WaitFive()
+    void stopRolling()
     {
-        yield return new WaitForSeconds(5.0f);
-        transform.position = GameObject.Find("jumpAttackLocationPrefab(Clone)").transform.position;
-        Destroy(GameObject.Find("jumpAttackLocationPrefab(Clone)"));
-        
-    }*/
+        bruteAnimations.SetBool("isRolling", false);
+    }
+
+    void attackSwingStart()
+    {
+        comboEnemyAxe.GetComponent<Collider>().enabled = true;
+        comboEnemyDamageValue = 5;
+    }
+
+    void comboAttackStart()
+    {
+        comboEnemyAxe.GetComponent<Collider>().enabled = true;
+        comboEnemyDamageValue = 10;
+    }
+
+    void downAttackStart()
+    {
+        comboEnemyAxe.GetComponent<Collider>().enabled = true;
+        comboEnemyDamageValue = 8;
+    }
+
+    void rollAttackStart()
+    {
+        comboEnemyAxe.GetComponent<Collider>().enabled = true;
+        comboEnemyDamageValue = 8;
+    }
+
+    void jumpAttackStart()
+    {
+        jumpAttackCollider.GetComponent<Collider>().enabled = true;
+        comboEnemyDamageValue = 20;
+    }
 }

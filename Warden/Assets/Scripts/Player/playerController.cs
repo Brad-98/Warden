@@ -22,15 +22,10 @@ public class playerController : MonoBehaviour
     public bool isPlayerSpinting;
     public bool isTalkingToDialogAI;
 
-  //  public float jumpHeight = 5.0f;
-  //  public float fallingAccleration = 2.5f;
+    public AudioClip hitEffect;
+    public AudioSource hitEffectSource;
 
-   // public int playerHealth = 5;
-   // private int currentPlayerHealth;
-
-    //private bool touchingGround = true;
-    
-	void Start ()
+    void Start ()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -43,8 +38,8 @@ public class playerController : MonoBehaviour
 
         currentSpeed = moveSpeed;
 
-       // currentPlayerHealth = playerHealth;
-	}
+        hitEffectSource.clip = hitEffect;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -214,18 +209,43 @@ public class playerController : MonoBehaviour
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightDamageValue;
+            hitEffectSource.Play();
+        }
+
+        if (collision.gameObject.tag == "scoutFriendSword") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("scoutFriend").GetComponent<scoutFriendController>().scoutFriendSword.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("scoutFriend").GetComponent<scoutFriendController>().scoutFriendDamageValue;
+            hitEffectSource.Play();
+        }
+
+        if (collision.gameObject.tag == "bossHand") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("Boss").GetComponent<bossLogicPhase1>().bossHandCollider_Phase1.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("Boss").GetComponent<bossLogicPhase1>().bossDamageValue;
+            hitEffectSource.Play();
+        }
+
+        if (collision.gameObject.tag == "comboEnemyAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        {
+            GameObject.FindWithTag("comboEnemy").GetComponent<bruteComboLogic>().comboEnemyAxe.GetComponent<Collider>().enabled = false;
+            GameObject.FindWithTag("comboEnemy").GetComponent<bruteComboLogic>().jumpAttackCollider.GetComponent<Collider>().enabled = false;
+            playerHealthBar.value -= GameObject.FindWithTag("comboEnemy").GetComponent<bruteComboLogic>().comboEnemyDamageValue;
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "minionAttackCollider") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionAttackCollider.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionDamageValue;
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "knightSword_V2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightDamageValue;
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "knightFoot") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
@@ -233,11 +253,13 @@ public class playerController : MonoBehaviour
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFoot.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFootDamageValue;
             playerRB.AddForce(transform.forward * -250);
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
         {
             playerHealthBar.value -= collision.gameObject.GetComponent<Fireball>().fireballDamage;
+            hitEffectSource.Play();
         }
 
         if (collision.gameObject.tag == "DialogAI") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY

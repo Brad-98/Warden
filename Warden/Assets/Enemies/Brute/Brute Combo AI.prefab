@@ -247,6 +247,7 @@ Transform:
   - {fileID: 5261272296149941395}
   - {fileID: 7809301300839866837}
   - {fileID: 6648564712152994484}
+  - {fileID: 9008883433980667775}
   m_Father: {fileID: 6507437003561654009}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1072,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBruteHealth: 5
+  currentBruteHealth: 0
   bruteAxeCollider: {fileID: 0}
 --- !u!114 &8415220559427450022
 MonoBehaviour:
@@ -1089,6 +1091,8 @@ MonoBehaviour:
   mycube: {fileID: 4429075946645487697, guid: 9a17aa51e791b3b4b92e7cfb2c89bf20, type: 3}
   bruteBody: {fileID: 6469594301539120846}
   bruteAnimations: {fileID: 3871765805920946821}
+  comboEnemyAxe: {fileID: 0}
+  comboEnemyDamageValue: 0
   bruteMoveSpeed: 4
   currentBruteMoveSpeed: 0
   playerLocation: {fileID: 0}
@@ -1096,7 +1100,17 @@ MonoBehaviour:
   rangeToAttack: 1.8
   jumpAttackTimerValue: 10
   jumpAttackTimer: 0
+  comboAttackTimerValue: 9
+  comboAttackTimer: 0
+  comboRollTimerValue: 6
+  comboRollTimer: 0
+  canRoll: 0
   canJumpAttack: 1
+  canComboAttack: 0
+  canComboAttackHealthCheck: 0
+  howManyNormalAttacks: 0
+  canDownAttack: 0
+  bruteDamageValue: 0
   currentBruteLogicState: 0
 --- !u!1 &3591655857569701094
 GameObject:
@@ -2515,9 +2529,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9009144516537257010}
+  - component: {fileID: 47085720680065409}
   m_Layer: 0
   m_Name: jumpAttackLoction
-  m_TagString: Untagged
+  m_TagString: comboEnemyAxe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2536,6 +2551,19 @@ Transform:
   m_Father: {fileID: 2677374421352121258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &47085720680065409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7829571627621296461}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7832739039164677601
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,6 +2704,50 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.020691782, y: 0.3329781, z: 0.098958865}
     m_Extent: {x: 0.76091766, y: 0.6076313, z: 0.4859354}
   m_DirtyAABB: 0
+--- !u!1 &8185212394957653086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9008883433980667775}
+  - component: {fileID: 5893894651248968427}
+  m_Layer: 0
+  m_Name: comboEnemyAxe
+  m_TagString: comboEnemyAxe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9008883433980667775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185212394957653086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5503656953474210877}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5893894651248968427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185212394957653086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.11, z: 0.49}
+  m_Center: {x: 0.48, y: -0.05, z: 0.7}
 --- !u!1 &8255911279742892643
 GameObject:
   m_ObjectHideFlags: 0
