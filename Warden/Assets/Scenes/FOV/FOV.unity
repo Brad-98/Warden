@@ -8483,6 +8483,16 @@ PrefabInstance:
       propertyPath: playerSprintBar
       value: 
       objectReference: {fileID: 1332783557}
+    - target: {fileID: 6138274250353135588, guid: 23636bcecd4a1c244b2e38152a6d75f3,
+        type: 3}
+      propertyPath: hitEffectSource
+      value: 
+      objectReference: {fileID: 1244872545}
+    - target: {fileID: 6138274250353135588, guid: 23636bcecd4a1c244b2e38152a6d75f3,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: a48023cab653d334c987f11bb40b9dba, type: 3}
     - target: {fileID: 7205222901573846627, guid: 23636bcecd4a1c244b2e38152a6d75f3,
         type: 3}
       propertyPath: playerSwordCollider
@@ -8490,6 +8500,12 @@ PrefabInstance:
       objectReference: {fileID: 895836075}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23636bcecd4a1c244b2e38152a6d75f3, type: 3}
+--- !u!82 &1244872545 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1170244625811357965, guid: 23636bcecd4a1c244b2e38152a6d75f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1244872544}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258968668
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -499,6 +499,9 @@ GameObject:
   - component: {fileID: 313151420}
   - component: {fileID: 313151419}
   - component: {fileID: 313151421}
+  - component: {fileID: 3525286764255518333}
+  - component: {fileID: 1823153602220274827}
+  - component: {fileID: 8455333019888525436}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -554,6 +557,68 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: -0.05, y: 1, z: 0.22}
+--- !u!114 &3525286764255518333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313151418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130e9e20e584f204fa849d6ff2a870da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossMoveSpeed: 5
+  currentBossMoveSpeed: 0
+  bossAnimations: {fileID: 313151419}
+  rangeToAttack: 1.8
+  playerLocation: {fileID: 0}
+  bossDamageValue: 5
+  isAttacking: 0
+  bossHandCollider_Phase1: {fileID: 505710924763118858}
+  awake: 0
+--- !u!114 &1823153602220274827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313151418}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20095e9abdbb3c40be17484ffe87f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossMoveSpeed: 5
+  currentBossMoveSpeed: 0
+  bossAnimations: {fileID: 313151419}
+  rangeToAttack: 1.8
+  playerLocation: {fileID: 0}
+  bossDamageValue: 5
+  isAttacking: 0
+  bossHandCollider_Phase1: {fileID: 505710924763118858}
+  awake: 0
+  startPhase2: 0
+  stompAttackTimerValue: 7
+  stompAttackTimer: 0
+  canStompAttack: 0
+  maxScale: {x: 3.5, y: 3.5, z: 3.5}
+  speed: 2
+  duration: 3
+--- !u!114 &8455333019888525436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313151418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411d198f99f033d4fbee33c2f9c239b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxBossHealth: 1
 --- !u!1 &325811554
 GameObject:
   m_ObjectHideFlags: 0

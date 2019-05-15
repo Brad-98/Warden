@@ -40,26 +40,19 @@ public class playerController : MonoBehaviour
 
         hitEffectSource.clip = hitEffect;
     }
-	
-	// Update is called once per frame
+
 	void Update ()
     {
-        if(this.gameObject.GetComponent<playerBlocking>().playerBlockingForward == true)
+        
+        if (isPlayerSpinting == true)
         {
-            currentSpeed = 0;
+        currentSpeed = sprintSpeed;
         }
         else
         {
-            if (isPlayerSpinting == true)
-            {
-                currentSpeed = sprintSpeed;
-            }
-            else
-            {
-                currentSpeed = moveSpeed;
-            }
+        currentSpeed = moveSpeed;
         }
-
+        
         if (playerHealthBar.value <= 0)
         {
             playerAnimations.SetBool("isDead", true);
@@ -69,7 +62,6 @@ public class playerController : MonoBehaviour
         Vector3 direction = Vector3.zero;
         direction.z = Input.GetAxis("Horizontal");
         direction.x = Input.GetAxis("Vertical");
-       // direction.y = Input.GetAxis("Jump");
 
         if (Input.GetKeyDown("escape"))
         {
@@ -83,18 +75,6 @@ public class playerController : MonoBehaviour
         transform.Translate(xAxisSpeed, 0, zAxisSpeed);
         transform.eulerAngles = Vector3.up * cameraT.eulerAngles.y;
 
-      //  if (Input.GetButtonDown("Jump") && (touchingGround == true))
-      //  {
-      //      playerRB.velocity = Vector3.up * jumpHeight;
-      //  }
-
-      //  if (playerRB.velocity.y < 0)
-      //  {
-      //      playerRB.velocity += Vector3.up * Physics.gravity.y * (fallingAccleration - 1) * Time.deltaTime;
-      //  }
-
-
-        // FIX ME
         if (playerSprintBar.value != 0)
         {
             if ((Input.GetKey(KeyCode.LeftShift)) && (Input.GetKey(KeyCode.W)) && (!Input.GetKey(KeyCode.A)) && (!Input.GetKey(KeyCode.D)) && (!Input.GetKey(KeyCode.S)))
@@ -125,21 +105,6 @@ public class playerController : MonoBehaviour
             playerSprintBar.value += Time.deltaTime;
         }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            this.gameObject.GetComponent<playerBlocking>().playerBlockingForward = false;
-        }
-
         if (direction.x > 0)
         {
             playerAnimations.SetBool("isWalkingForward", true);
@@ -152,7 +117,6 @@ public class playerController : MonoBehaviour
         if (direction.x < 0)
         {
             playerAnimations.SetBool("isWalkingBackwards", true);
-            playerAnimations.SetBool("isBlocking", false);
         }
         else
         {
@@ -176,57 +140,32 @@ public class playerController : MonoBehaviour
         {
             playerAnimations.SetBool("isWalkingLeft", false);
         }
-
-        /* if (direction.y > 0)
-        {
-            playerAnimations.SetBool("isJumping", true);
-        }
-        else
-        {
-            playerAnimations.SetBool("isJumping", false);
-        } */
     }
-
-   // void OnCollisionEnter(Collision playerCollider)
-   // {
-    //    if(playerCollider.gameObject.tag == "ground")
-    //    {
-    //        touchingGround = true;
-    //    }
-   // }
-
-   // void OnCollisionExit(Collision playerCollider)
-  //  {
-   //     if (playerCollider.gameObject.tag == "ground")
-   //     {
-   //         touchingGround = false;
-   //     }
-   // }
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "knightSword_V1") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "knightSword_V1") 
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V1>().knightDamageValue;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "scoutFriendSword") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "scoutFriendSword") 
         {
             GameObject.FindWithTag("scoutFriend").GetComponent<scoutFriendController>().scoutFriendSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("scoutFriend").GetComponent<scoutFriendController>().scoutFriendDamageValue;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "bossHand") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "bossHand") 
         {
             GameObject.FindWithTag("Boss").GetComponent<bossLogicPhase1>().bossHandCollider_Phase1.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("Boss").GetComponent<bossLogicPhase1>().bossDamageValue;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "comboEnemyAxe") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "comboEnemyAxe") 
         {
             GameObject.FindWithTag("comboEnemy").GetComponent<bruteComboLogic>().comboEnemyAxe.GetComponent<Collider>().enabled = false;
             GameObject.FindWithTag("comboEnemy").GetComponent<bruteComboLogic>().jumpAttackCollider.GetComponent<Collider>().enabled = false;
@@ -234,21 +173,21 @@ public class playerController : MonoBehaviour
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "minionAttackCollider") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "minionAttackCollider")
         {
             GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionAttackCollider.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("minion").GetComponent<Minion_AI>().minionDamageValue;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "knightSword_V2") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "knightSword_V2") 
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightSword.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightDamageValue;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "knightFoot") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "knightFoot") 
         {
             GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFoot.GetComponent<Collider>().enabled = false;
             playerHealthBar.value -= GameObject.FindWithTag("enemyKnight").GetComponent<knightAttack_V2>().knightFootDamageValue;
@@ -256,13 +195,13 @@ public class playerController : MonoBehaviour
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "Fireball") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "Fireball") 
         {
             playerHealthBar.value -= collision.gameObject.GetComponent<Fireball>().fireballDamage;
             hitEffectSource.Play();
         }
 
-        if (collision.gameObject.tag == "DialogAI") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "DialogAI") 
         {
             isTalkingToDialogAI = true;
         }
@@ -270,7 +209,7 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.tag == "DialogAI") //GET THE TIMERS RIGHT FOR ATTACKING ENEMY
+        if (collision.gameObject.tag == "DialogAI") 
         {
             isTalkingToDialogAI = false;
         }
